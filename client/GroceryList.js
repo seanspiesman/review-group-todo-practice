@@ -17,11 +17,28 @@ class GroceryList extends React.Component{
   }
 
   addItem(){
+    //This will work, but is not preferred
+    //GOOD
+    let temp = this.state.items
+    temp.push(this.state.input)
+    this.setState({
+      items: temp,
+      input: ''
+    })
+
+    //BETTER
     this.setState({
       items: state.items.concat(this.state.input),
       input: ''
     })
-  }
+    
+    //BEST
+    //This is the preferred Method to not modify state directly
+    this.setState({
+      items: [...this.state.items, this.state.input],
+      input: ''
+    })
+  }   
 
   render(){
     return(
