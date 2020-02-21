@@ -6,7 +6,7 @@ class GroceryList extends React.Component{
     super(props)
     this.state = {
       items: ['Chips','Spinach','Jerky'],
-      input: ''
+      input: '',
     }
   }
 
@@ -17,18 +17,20 @@ class GroceryList extends React.Component{
   }
 
   addItem(){
-    console.log(this)
-    console.log('on click worked')
+    this.setState({
+      items: state.items.concat(this.state.input),
+      input: ''
+    })
   }
 
   render(){
     return(
       <div>
         <h1>GroceryList</h1>
-        <input onChange={this.handleChange.bind(this)}></input>
+        <input onChange={this.handleChange.bind(this)} value={this.state.input}></input>
         <button onClick={this.addItem.bind(this)}>Submit</button>
         <ul>
-          {this.state.items.map( (food,index) =>(
+          {this.state.items.map( (food,index) => (
             <ListItem key={index} foodItem={food}/>
           ))}
         </ul>

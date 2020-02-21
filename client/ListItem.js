@@ -1,8 +1,8 @@
 import React from 'react';
 
-function ListItem(props){
-  return(
-    <li>{props.foodItem}</li>
+function ListItem({foodItem}){
+  return (
+    <li>{foodItem}</li>
   )
 }
 export default ListItem
