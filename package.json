@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "webpack -d --watch & live-server --port=3030 --watch=dist --open=dist",
+    "server": "nodemon server/server.js",
     "start-oh": "webpack -d --watch"
   },
   "repository": {
