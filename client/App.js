@@ -13,31 +13,10 @@ export class App extends React.Component {
     //this.clickHandler = this.clickHandler.bind(this)
   }
 
-  // axios.post('/stateInfo', {
-  //   firstName: 'Fred',
-  //   lastName: 'Flintstone'
-  // })
-  // .then(function (response) {
-  //   console.log(response);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
-
   clickHandler() {
-    // Axios.post("/stateInfo", {
-    //   firstName: "Fred",
-    //   lastName: "Flintstone"
-    // })
-    //   .then(function(response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
-
     const val = this.refItem.current.value;
-    Axios.post("/stateInfo", { val: "test" })
+    // console.log(val);
+    Axios.post("http://localhost:3000/stateInfo", { val })
       .then(response => {
         console.log(response);
         this.setState(state => {
@@ -54,7 +33,9 @@ export class App extends React.Component {
   clickHandlerDelete(data) {
     console.log(data);
     this.setState(state => {
-      return { glist: state.glist.splice(data, 1) };
+      var copy = state.glist.slice();
+      copy.splice(data, 1);
+      return { glist: copy };
     });
   }
 
